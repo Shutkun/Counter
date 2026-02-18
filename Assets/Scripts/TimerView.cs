@@ -9,22 +9,17 @@ public class TimerView : MonoBehaviour
 
     private void Start()
     {
-        _text.text = _timer.currentCount.ToString();
-    }
-
-    private void Update()
-    {
-        DisplayCountdown(_timer.currentCount);
+        DisplayCountdown(_timer.CurrentCount);
     }
 
     private void OnEnable()
     {
-        _timer.TimerActiv += DisplayCountdown;
+        _timer.TimerСhange += DisplayCountdown;
     }
 
     private void OnDisable()
     {
-        _timer.TimerActiv -= DisplayCountdown;
+        _timer.TimerСhange -= DisplayCountdown;
     }
 
     private void DisplayCountdown(int count)

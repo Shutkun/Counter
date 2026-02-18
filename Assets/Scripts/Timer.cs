@@ -6,13 +6,13 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TimerInput _timerInput;
 
-    public int currentCount = 0;
-
     private Coroutine _countdown;
     private bool _isRunning = false;
     private float _delay = 0.5f;
 
-    public event Action <int> TimerActiv;
+    public event Action<int> TimerСhange;
+
+    public int CurrentCount { get; private set; } = 0;
 
     private void OnEnable()
     {
@@ -33,20 +33,22 @@ public class Timer : MonoBehaviour
         {
             _countdown = StartCoroutine(Countdown());
         }
-
-        TimerActiv?.Invoke(currentCount);
+        else
+        {
+            StopCoroutine(_countdown);
+            _countdown = null;
+        }
     }
 
     private IEnumerator Countdown()
     {
         var wait = new WaitForSeconds(_delay);
 
-        while (enabled)
+        while (_isRunning)
         {
-            if (_isRunning)
-            {
-                currentCount++;
-            }
+            CurrentCount++;
+
+            TimerСhange?.Invoke(CurrentCount);
 
             yield return wait;
         }
