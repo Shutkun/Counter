@@ -10,22 +10,22 @@ public class Stopwatch : MonoBehaviour
     private bool _isRunning = false;
     private float _delay = 0.5f;
 
-    public event Action<int> StopwatchСhanging;
+    public event Action<int> Сhanging;
 
     public int CurrentCount { get; private set; } = 0;
 
     private void OnEnable()
     {
-        _stopwatchInput.Clicked += StartStopwatch;
+        _stopwatchInput.Clicked += Start;
     }
 
     private void OnDisable()
     {
-        _stopwatchInput.Clicked -= StartStopwatch;
+        _stopwatchInput.Clicked -= Start;
 
     }
 
-    private void StartStopwatch()
+    private void Start()
     {
         _isRunning = !_isRunning;
 
@@ -48,7 +48,7 @@ public class Stopwatch : MonoBehaviour
         {
             CurrentCount++;
 
-            StopwatchСhanging?.Invoke(CurrentCount);
+            Сhanging?.Invoke(CurrentCount);
 
             yield return wait;
         }

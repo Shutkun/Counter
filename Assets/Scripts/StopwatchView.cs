@@ -14,12 +14,12 @@ public class StopwatchView : MonoBehaviour
 
     private void OnEnable()
     {
-        _stopwatch.StopwatchСhanging += DisplayCountdown;
+        _stopwatch.Сhanging += DisplayCountdown;
     }
 
     private void OnDisable()
     {
-        _stopwatch.StopwatchСhanging -= DisplayCountdown;
+        _stopwatch.Сhanging -= DisplayCountdown;
     }
 
     private void DisplayCountdown(int count)
